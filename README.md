@@ -123,6 +123,28 @@ apt install php libapache2-mod-php
 ## Instalar extensiones de PHP
 
 ```bash
-apt install -y php-gd php-curl php-zip
+apt install -y php-cli php-common php-mbstring php-gd php-intl php-xml php-mysql php-zip php-curl php-xmlrpc
 systemclt restart apache2a
+```
+
+# Instalar MySQL / MARIA DB
+
+https://hostingmasbarato.com/como/como-instalar-opencart-en-un-servidor-ubuntu-18-04-o-vps-con-apache-mariadb-y-php-7/
+
+```bash
+apt-get install mariadb-server mariadb-client
+mysql_secure_installation
+```
+Crear la base de datos
+
+```bash
+mysql -u root -p
+# Crear base de datos
+CREATE DATABASE opencart;
+# crear usuario
+CREATE USER 'ocuser'@'localhost' IDENTIFIED BY 'password';
+# darle permisos al usuario
+GRANT ALL ON opencart.* TO 'ocuser'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+EXIT;
 ```
